@@ -153,6 +153,11 @@ the new variables 'underline-line-scaling-flag',
 'overline-line-scaling-flag' and 'strike-through-line-scaling-flag' to
 control the scaling for each attribute.
 
++++
+*** New user option 'underline-wave-as-line'.
+If non-nil, underlines with the 'wave' style are displayed as plain
+single lines instead.  This applies to both GUI and text-only frames.
+
 ---
 *** Support for overline face attributes on text-only terminals.
 Emacs now displays overlines on text-only terminals.  Terminal support

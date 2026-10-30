@@ -2849,6 +2849,9 @@ support all the aforementioned underline styles, while on text terminals
 @code{double-line}, @code{wave} and @code{dots} are contingent on the
 availability of the @code{Smulx} or @code{Su} terminfo capabilities.
 Omitting the attribute @code{:style} means to use a straight line.
+@vindex underline-wave-as-line
+If the variable @code{underline-wave-as-line} is non-@code{nil},
+@code{wave} underlines are displayed as straight lines instead.
 @var{position}, if non-@code{nil}, means to display the underline at the
 descent of the text, instead of at the baseline level.  If it is a
 number, then it specifies the amount of pixels above the descent to

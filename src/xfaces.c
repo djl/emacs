@@ -6607,7 +6607,9 @@ realize_gui_face (struct face_cache *cache, Lisp_Object attrs[LFACE_VECTOR_SIZE]
 	      else if (EQ (value, Qdouble_line))
 		face->underline = FACE_UNDERLINE_DOUBLE_LINE;
 	      else if (EQ (value, Qwave))
-		face->underline = FACE_UNDERLINE_WAVE;
+		face->underline = (underline_wave_as_line
+				   ? FACE_UNDERLINE_SINGLE
+				   : FACE_UNDERLINE_WAVE);
 	      else if (EQ (value, Qdots))
 		face->underline = FACE_UNDERLINE_DOTS;
 	      else if (EQ (value, Qdashes))
@@ -6841,7 +6843,9 @@ realize_tty_face (struct face_cache *cache,
 	      else if (EQ (value, Qdouble_line))
 		face->underline = FACE_UNDERLINE_DOUBLE_LINE;
 	      else if (EQ (value, Qwave))
-		face->underline = FACE_UNDERLINE_WAVE;
+		face->underline = (underline_wave_as_line
+				   ? FACE_UNDERLINE_SINGLE
+				   : FACE_UNDERLINE_WAVE);
 	      else if (EQ (value, Qdots))
 		face->underline = FACE_UNDERLINE_DOTS;
 	      else if (EQ (value, Qdashes))
@@ -7670,6 +7674,13 @@ syms_of_xfaces (void)
 This variable is intended for use only by code that evaluates
 the "specificity" of a face specification and should be let-bound
 only for this purpose.  */);
+
+  DEFVAR_BOOL ("underline-wave-as-line", underline_wave_as_line,
+    doc: /* Non-nil means draw `wave' style underlines as plain lines.
+Faces already realized keep their old appearance until the face
+cache is cleared; use the Customize interface or call
+`clear-face-cache' after setting this variable.  */);
+  underline_wave_as_line = false;
 
   DEFVAR_LISP ("face--new-frame-defaults", Vface_new_frame_defaults,
     doc: /* Hash table of global face definitions (for internal use only.)  */);

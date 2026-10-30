@@ -865,6 +865,10 @@ since it could result in memory overflow and make Emacs crash."
                               (const :tag "Allow any scalable font" t)
                               (repeat regexp))
               "22.1")
+             (underline-wave-as-line display boolean "32.1"
+              :set ,(lambda (symbol value)
+                      (set-default symbol value)
+                      (clear-face-cache)))
 	     ;; xfns.c
 	     (x-bitmap-file-path installation
 				 (repeat (directory :format "%v")))
